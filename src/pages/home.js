@@ -1,13 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
+import resturant_items from '../data/resturant.json'
+
 
 const Home = () => {
+  
+  function getRandom (num) {
+    return Math.floor(Math.random()*num) + 1
+  }
+
+  const [store, setStore] = useState(0);
+
+  // Math.random 產出 0-1 之間小數
+  // Math.floor 無條件捨去
+  // 因為要產生 1-num 之間數字，所以 +1 才不會為 0
+  const handleClick = () => {
+    setStore(getRandom(5))
+  }
+
   return (
     <div className="h-screen">
-      <header className="bg-white">
-          <div className="max-w-7xl my-12 mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl text-primary tracking-widest hover:transition-all">HomePage</h1>
+      <div className="max-w-7xl my-12 mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl text-primary tracking-widest">午餐吃什麼</h1>
+      <button 
+        onClick={handleClick}
+        className="text-2xl px-6 py-4 my-8 bg-primary rounded-3xl text-background tracking-widest hover:opacity-75"
+      >
+        點我決定
+      </button>
+      {
+        resturant_items.map((item, store_id) => (
+          item.id === store ?
+          <div key={store_id} className="">
+            <div className="text-3xl py-10 tracking-widest">{item.name}</div>
+            <div className="text-lg tracking-wider">預約電話：{item.phone}</div>
+            <div className="text-lg tracking-wider">營業時間：{item.status.Mon}</div>
           </div>
-        </header>
+          : (
+            <div></div>
+          )
+          
+        ))
+      }
+     </div>
     </div>
   )
 }
