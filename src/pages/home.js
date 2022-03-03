@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import resturant_items from '../data/resturant.json'
 
-
 const Home = () => {
   
   function getRandom (num) {
@@ -14,7 +13,7 @@ const Home = () => {
   // Math.floor 無條件捨去
   // 因為要產生 1-num 之間數字，所以 +1 才不會為 0
   const handleClick = () => {
-    setStore(getRandom(5))
+    setStore(getRandom(10))
   }
 
   return (
@@ -30,7 +29,7 @@ const Home = () => {
       {
         resturant_items.map((item, store_id) => (
           item.id === store ?
-          <div key={store_id} className="">
+          <div key={store_id}>
             <div className="text-3xl py-10 tracking-widest">{item.name}</div>
             <div className="text-lg tracking-wider">預約電話：{item.phone}</div>
             <div className="text-lg tracking-wider">營業時間：{item.status.Mon}</div>
