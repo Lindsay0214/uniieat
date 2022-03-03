@@ -13,7 +13,7 @@ const Home = () => {
   // Math.floor 無條件捨去
   // 因為要產生 1-num 之間數字，所以 +1 才不會為 0
   const handleClick = () => {
-    setStore(getRandom(10))
+    setStore(getRandom(11))
   }
 
   return (
